@@ -1,14 +1,18 @@
 'use client';
 import Image from "next/image";
 
-const Avatar = () => {
+interface AvatarProps {
+    src?: string | null | undefined;
+}
+
+const Avatar: React.FC<AvatarProps> = ({ src }) => {
   return (
     <Image 
         alt='avatar'
         className="rounded-full"
         height="30"
         width="30"
-        src="/user.png"
+        src={src || "/user.png"}
     />
   )
 }
