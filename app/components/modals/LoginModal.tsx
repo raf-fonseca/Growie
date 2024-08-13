@@ -18,7 +18,6 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 import Button from "../Button";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { useRouter } from "next/navigation";
-import { log } from "console";
 
 const LoginModal = () => {
     const router = useRouter();
@@ -93,14 +92,14 @@ const LoginModal = () => {
                 outline
                 label="Continue with Google"
                 icon={FcGoogle}
-                onClick={() => {}}
+                onClick={() => signIn('google')}
 
             />
             <Button 
                 outline
                 label="Continue with Github"
                 icon={AiFillGithub}
-                onClick={() => {}}
+                onClick={() => signIn('github')}
 
             />
             <div className="text-neutral-500 text-center mt-4 font-light">

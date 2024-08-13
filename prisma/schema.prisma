@@ -37,7 +37,7 @@ model Account {
     type String
     provider String
     providerAccountId String
-    refresh_token String?
+    refreshToken String?
     accessToken String?
     accessTokenExpires DateTime?
     createdAt DateTime @default(now())
