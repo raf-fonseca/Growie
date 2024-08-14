@@ -8,6 +8,7 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { SafeUser } from "@/app/types";
 import { signOut } from "next-auth/react";
+import useRentModal from "@/app/hooks/useRentModal";
 
 interface UserMenuProps {
     currentUser?: SafeUser | null;  
@@ -16,17 +17,25 @@ interface UserMenuProps {
 const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal(); 
+    const rentModal = useRentModal();
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleOpen = useCallback(() => {
         setIsOpen((value) => !value); // Reversing the value of isOpen
     }, []);
 
+    const onRent = useCallback(() => {
+        if (!currentUser) {
+            loginModal.onOpen();
+        }
+
+        rentModal.onOpen();
+    }, [currentUser, loginModal, rentModal]);
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
                 <div 
-                    onClick={() => console.log('User Menu Clicked')}
+                    onClick={onRent}
                     className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer">
                         Host your garden 
                 </div>
@@ -62,7 +71,7 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
                                     label="My reservations"
                                 />
                                 <MenuItem 
-                                    onClick={() => console.log('Profile Clicked')}
+                                    onClick={rentModal.onOpen}
                                     label="Host my garden"
                                 />
                                 <hr />
@@ -79,7 +88,7 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
                                     label="Log in"
                                 />
                                 <MenuItem 
-                                    onClick={registerModal.onOpen}
+                                    onClick={registerModal.onOpen} // TODO: Login after signing up 
                                     label="Sign Up"
                                 />
                         
