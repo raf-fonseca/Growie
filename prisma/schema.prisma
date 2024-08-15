@@ -4,7 +4,7 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
-// TODO: add more fields if neccessary
+// TODO: add more fields for listing if neccessary
 // run $ npx prisma db push
 
 generator client {
@@ -49,7 +49,7 @@ model Account {
 model Listing {
     id String @id @default(auto()) @map("_id") @db.ObjectId
     title String
-    dscription String
+    description String
     imageSrc String
     createdAt DateTime @default(now())
     category String
