@@ -9,6 +9,7 @@ import CategoryInput from '../inputs/CategoryInput';
 import { FieldValues, useForm } from 'react-hook-form';
 import CountrySelect from '../inputs/CountrySelect';
 import dynamic from 'next/dynamic';
+import Counter from '../inputs/Counter';
 
 
 enum STEPS {
@@ -37,7 +38,7 @@ const RentModal = () => {
         defaultValues: {
             category: '',
             location: null,
-            plot: '',
+            plot: 1,
             season: '',
             imageSrc: '',
             price: 1,
@@ -50,6 +51,10 @@ const RentModal = () => {
 
     const category = watch('category');
     const location = watch('location');
+    const plot = watch('plot');
+
+    const decapitalize = str => `${str.charAt(0).toLowerCase()}${str.slice(1)}`;
+    
 
     const Map = useMemo(() => dynamic(() => import('../Map'), {
         ssr: false
@@ -123,6 +128,23 @@ const RentModal = () => {
                 />
                 <Map 
                     center={location?.latlng}
+                />
+            </div>
+        )
+    }
+
+    if( step === STEPS.INFO) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading 
+                    // title={`Tell us about your ${category} plot`}
+                    title="Share some basics about your plot"
+                    subtitle={`How do you care for your ${decapitalize(category)}`}
+                />
+                <Counter 
+                    title="Plot size"
+                    subtitle="How big is your plot? (sq ft)"
+                    value={plot}
                 />
             </div>
         )

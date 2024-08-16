@@ -53,7 +53,7 @@ model Listing {
     imageSrc String
     createdAt DateTime @default(now())
     category String
-    plot String
+    plot Int
     season String
     locationValue String
     userId String @db.ObjectId
