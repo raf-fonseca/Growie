@@ -9,7 +9,7 @@ import CategoryInput from '../inputs/CategoryInput';
 import { FieldValues, useForm } from 'react-hook-form';
 import CountrySelect from '../inputs/CountrySelect';
 import dynamic from 'next/dynamic';
-import Counter from '../inputs/Counter';
+import PlotInput from '../inputs/PlotInput';
 
 
 enum STEPS {
@@ -52,6 +52,7 @@ const RentModal = () => {
     const category = watch('category');
     const location = watch('location');
     const plot = watch('plot');
+
 
     const decapitalize = str => `${str.charAt(0).toLowerCase()}${str.slice(1)}`;
     
@@ -141,10 +142,11 @@ const RentModal = () => {
                     title="Share some basics about your plot"
                     subtitle={`How do you care for your ${decapitalize(category)}`}
                 />
-                <Counter 
+                <PlotInput 
                     title="Plot size"
-                    subtitle="How big is your plot? (sq ft)"
                     value={plot}
+                    subtitle="How big is your plot? (sq ft)"
+                    onChange={(value) => setCustomValue('plot', value)}
                 />
             </div>
         )
