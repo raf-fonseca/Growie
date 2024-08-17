@@ -10,7 +10,8 @@ interface PlotInputProps {
 const PlotInput: React.FC<PlotInputProps> = ({title, subtitle, value, onChange}) => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newValue = parseInt(e.target.value, 10); // Ensure the value is a number
+        let newValue = parseInt(e.target.value, 10); 
+        if (newValue < 1) newValue = 1; // prevent going below 1
         onChange(newValue);
     };
 

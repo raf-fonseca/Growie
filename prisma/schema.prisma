@@ -54,7 +54,6 @@ model Listing {
     createdAt DateTime @default(now())
     category String
     plot Int
-    season String
     locationValue String
     userId String @db.ObjectId
     price Int

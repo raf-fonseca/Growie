@@ -10,6 +10,7 @@ import { FieldValues, useForm } from 'react-hook-form';
 import CountrySelect from '../inputs/CountrySelect';
 import dynamic from 'next/dynamic';
 import PlotInput from '../inputs/PlotInput';
+import ImageUpload from '../inputs/ImageUpload';
 
 
 enum STEPS {
@@ -39,7 +40,6 @@ const RentModal = () => {
             category: '',
             location: null,
             plot: 1,
-            season: '',
             imageSrc: '',
             price: 1,
             title: '',
@@ -52,6 +52,7 @@ const RentModal = () => {
     const category = watch('category');
     const location = watch('location');
     const plot = watch('plot');
+    const imageSrc = watch('imageSrc');
 
 
     const decapitalize = str => `${str.charAt(0).toLowerCase()}${str.slice(1)}`;
@@ -134,7 +135,7 @@ const RentModal = () => {
         )
     }
 
-    if( step === STEPS.INFO) {
+    if ( step === STEPS.INFO) {
         bodyContent = (
             <div className="flex flex-col gap-8">
                 <Heading 
@@ -146,7 +147,23 @@ const RentModal = () => {
                     title="Plot size"
                     value={plot}
                     subtitle="How big is your plot? (sq ft)"
-                    onChange={(value) => setCustomValue('plot', value)}
+                    onChange={(value) => setCustomValue('plot', value)} 
+                />
+                {/* <hr /> */}
+            </div>
+        )
+    }
+
+    if( step === STEPS.IMAGES) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading 
+                    title="Upload an image of your plot"
+                    subtitle="Show off your garden!"
+                />
+                <ImageUpload 
+                    value={imageSrc}
+                    onChange={(value) => setCustomValue('imageSrc', value)}
                 />
             </div>
         )
