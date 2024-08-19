@@ -60,8 +60,6 @@ const RentModal = () => {
     const plot = watch('plot');
     const imageSrc = watch('imageSrc');
 
-
-    const decapitalize = str => `${str.charAt(0).toLowerCase()}${str.slice(1)}`;
     
 
     const Map = useMemo(() => dynamic(() => import('../Map'), {
@@ -168,7 +166,6 @@ const RentModal = () => {
         bodyContent = (
             <div className="flex flex-col gap-8">
                 <Heading 
-                    // title={`Tell us about your ${category} plot`}
                     title="Share some basics about your plot"
                     subtitle="How would you describe it?"
                 />
@@ -192,7 +189,7 @@ const RentModal = () => {
                 />
                 <hr />
                 <Input 
-                    id="plot size"
+                    id="plot"
                     label="Plot size (sq ft)"
                     type="number"
                     disabled={isLoading}
