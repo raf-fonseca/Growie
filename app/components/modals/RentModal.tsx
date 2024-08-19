@@ -1,3 +1,4 @@
+// Todo: Make titles capitalize
 'use client';
 
 import useRentModal from '@/app/hooks/useRentModal'
@@ -6,11 +7,16 @@ import { useMemo, useState } from 'react'
 import Heading from '../Heading'
 import { categories } from '../navbar/Categories';
 import CategoryInput from '../inputs/CategoryInput';
-import { FieldValues, useForm } from 'react-hook-form';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import CountrySelect from '../inputs/CountrySelect';
 import dynamic from 'next/dynamic';
 import PlotInput from '../inputs/PlotInput';
 import ImageUpload from '../inputs/ImageUpload';
+import Input from '../inputs/Input';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
+
 
 
 enum STEPS {
@@ -18,14 +24,14 @@ enum STEPS {
     LOCATION = 1,
     INFO = 2,
     IMAGES = 3,
-    DESCRIPTION = 4,
-    PRICE = 5
+    PRICE = 4
 }
 
 const RentModal = () => {
     const rentModal = useRentModal();
-
+    const router = useRouter();
     const [step, setStep] = useState(STEPS.CATEGORY);
+    const [isLoading, setIsLoading] = useState(false);
 
     const {
         register,
@@ -76,6 +82,29 @@ const RentModal = () => {
 
     const onNext = () => {
         setStep((value) => value + 1);
+    }
+
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+        if (step != STEPS.PRICE) { // if not on the last step
+            return onNext();
+        }
+
+        setIsLoading(true);
+
+        axios.post('/api/listings', data)
+        .then(() => {
+            toast.success("Listing Created!");
+            router.refresh();
+            reset();
+            setStep(STEPS.CATEGORY); // reset to first step
+            rentModal.onClose();
+        })
+        .catch(() => {
+            toast.error("An error occurred. Please try again.");
+        }).finally (() => {
+            setIsLoading(false);
+        })
+
     }
 
     const actionLabel = useMemo(() => {
@@ -141,15 +170,44 @@ const RentModal = () => {
                 <Heading 
                     // title={`Tell us about your ${category} plot`}
                     title="Share some basics about your plot"
-                    subtitle={`How do you care for your ${decapitalize(category)}`}
+                    subtitle="How would you describe it?"
                 />
-                <PlotInput 
+                
+                <Input 
+                    id="title"
+                    label="Title"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+                <hr />
+                <Input 
+                    id="description"
+                    label="Description"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+                <hr />
+                <Input 
+                    id="plot size"
+                    label="Plot size (sq ft)"
+                    type="number"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+                {/* TODO: remove PlotInput if number logic works */}
+                {/* <PlotInput 
                     title="Plot size"
                     value={plot}
                     subtitle="How big is your plot? (sq ft)"
                     onChange={(value) => setCustomValue('plot', value)} 
-                />
-                {/* <hr /> */}
+                /> */}
+                
             </div>
         )
     }
@@ -169,12 +227,33 @@ const RentModal = () => {
         )
     }
 
+    if (step === STEPS.PRICE) {
+        bodyContent = (
+            <div className="flex flex-col gap-8">
+                <Heading 
+                    title="Set your price "
+                    subtitle="How much would you like to charge per season?"
+                />
+                <Input 
+                    id="price"
+                    label="Price"
+                    formatPrice
+                    type="number"
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+            </div>
+        )
+    }
+
 
   return (
     <Modal 
         isOpen={rentModal.isOpen}
         onClose={rentModal.onClose}
-        onSubmit={onNext}
+        onSubmit={handleSubmit(onSubmit)}
         actionLabel={actionLabel}
         secondaryActionLabel={secondaryActionLabel}
         secondaryAction={step === STEPS.CATEGORY ? undefined : onBack} // if on the first step, dont show back button, else show back button

@@ -32,11 +32,20 @@ const Input: React.FC<InputProps> = ({
                     className="text-neutral-700 absolute top-5 left-2"
                 />
             )}
+
             <input
                 id={id}
                 type={type}
                 disabled={disabled}
-                {...register(id, { required })}
+                {...register(id, { 
+                    required,
+                    validate: (value) => {
+                        if (type === 'number' && value < 0) {
+                            return "This field must be a positive number";
+                        }
+                        return true;
+                    }
+                })}
                 placeholder=" "
                 className={`peer w-full p-4 pt-6 font-light bg-white border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed 
                     ${formatPrice ? 'pl-9' : 'pl-4'}
