@@ -194,15 +194,7 @@ const RentModal = () => {
                     register={register}
                     errors={errors}
                     required
-                />
-                {/* TODO: remove PlotInput if number logic works */}
-                {/* <PlotInput 
-                    title="Plot size"
-                    value={plot}
-                    subtitle="How big is your plot? (sq ft)"
-                    onChange={(value) => setCustomValue('plot', value)} 
-                /> */}
-                
+                />                
             </div>
         )
     }

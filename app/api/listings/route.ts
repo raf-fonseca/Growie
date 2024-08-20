@@ -32,7 +32,7 @@ export async function POST(
                 description,
                 imageSrc,
                 category,
-                plot,
+                plot: parseInt(price, 10),
                 locationValue: location.value,
                 price: parseInt(price, 10),
                 userId: currentUser.id,
