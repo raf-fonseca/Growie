@@ -1,3 +1,4 @@
+//TODO: font issue i think?
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -31,7 +32,9 @@ export default async function RootLayout({
             <RentModal />
             <LoginModal />
             <Navbar currentUser={currentUser}/>
-            {children}
+            <div className="pb-20 pt-28">
+                {children}
+            </div>
           </body>
         </html>
     );

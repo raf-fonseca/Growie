@@ -50,8 +50,6 @@ const RentModal = () => {
             price: 1,
             title: '',
             description: '',
-
-
         }
     });
 

@@ -8,3 +8,5 @@ export type SafeUser = Omit<
     updatedAt: string;
     emailVerified: string | null;
 };
+
+// Datetime objects can cause issues when serializing to JSON, so they must be converted to strings
