@@ -1,4 +1,12 @@
 import { User } from "@prisma/client"
+import { Listing } from "@prisma/client"
+
+export type SafeListing = Omit<
+    Listing,
+    "createdAt"
+> & {
+    createdAt: string;
+}
 
 export type SafeUser = Omit<
     User,
@@ -8,5 +16,7 @@ export type SafeUser = Omit<
     updatedAt: string;
     emailVerified: string | null;
 };
+
+
 
 // Datetime objects can cause issues when serializing to JSON, so they must be converted to strings
