@@ -219,7 +219,7 @@ const RentModal = () => {
             <div className="flex flex-col gap-8">
                 <Heading 
                     title="Set your price "
-                    subtitle="How much would you like to charge per season?"
+                    subtitle="How much would you like to charge per week?"
                 />
                 <Input 
                     id="price"

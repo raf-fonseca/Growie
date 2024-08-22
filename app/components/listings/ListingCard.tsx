@@ -101,7 +101,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
                     </div>
                     {!reservation && (
                         <div className="font-light">
-                            per season
+                            per week
                         </div>
                     )}
                 </div>
