@@ -70,7 +70,7 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
                                     label="My gardens"
                                 />
                                 <MenuItem 
-                                    onClick={() => console.log('Profile Clicked')}
+                                    onClick={() => router.push('/reservations')}
                                     label="My reservations"
                                 />
                                 <MenuItem 

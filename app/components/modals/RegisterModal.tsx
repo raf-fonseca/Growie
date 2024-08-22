@@ -41,6 +41,7 @@ const RegisterModal = () => {
         axios.post("/api/register", data)
         .then(() => {
             registerModal.onClose();
+            toast.success('Account created, please log in.');
         })
         .catch((error) => {
             toast.error('An error occurred. Please try again later.');
