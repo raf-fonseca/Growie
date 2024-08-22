@@ -58,7 +58,7 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
                         {currentUser ? (
                             <>
                                 <MenuItem 
-                                    onClick={() => console.log('Profile Clicked')}
+                                    onClick={() => router.push('/favorites')}
                                     label="My favourites"
                                 />
                                 <MenuItem 
