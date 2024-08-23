@@ -36,7 +36,7 @@ const ReservationsClient:React.FC<ReservationsClientProps> = ({reservations, cur
     return (
         <Container>
             <Heading 
-                title="Reservations"
+                title="Guest Bookings"
                 subtitle="Bookings made on your plots"
             />
 
