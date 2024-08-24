@@ -2,7 +2,9 @@ import prisma from "@/app/libs/prismadb";
 
 export interface IListingsParams {
     userId?: string;
-
+    plotSize?: number;
+    startDate?: string;
+    endDate?: string;
 
 }
 
