@@ -102,7 +102,7 @@ const SearchModal = () => {
     let bodyContent = (
         <div className="flex flex-col gap-8">
             <Heading 
-                title="Where do you want to Growie?"
+                title="Where Do You Want to Growie?"
                 subtitle="Select a location"
             />
             <CountrySelect 
@@ -118,7 +118,7 @@ const SearchModal = () => {
         bodyContent = (
             <div className="flex flex-col gap-8">
                 <Heading 
-                    title="When do you want to Growie?"
+                    title="When Do You Want To Growie?"
                     subtitle="Select a date"
                 />
                 <Calendar 
@@ -133,7 +133,7 @@ const SearchModal = () => {
         bodyContent = (
             <div className="flex flex-col gap-8">
                 <Heading 
-                    title="How big do you need to Growie?"
+                    title="How Big Do You Need To Growie?"
                     subtitle="Select a size"
                 />
                 

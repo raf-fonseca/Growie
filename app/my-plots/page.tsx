@@ -20,7 +20,7 @@ const guestBookingsPage = async () => {
     if (listings.length === 0){
         return (
             <EmptyState 
-                title="No plots found"
+                title="No Plots Found"
                 subtitle="You do not have any plots hosted"
             />
         )

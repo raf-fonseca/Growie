@@ -12,7 +12,7 @@ const ListingPage = async () => {
     if(listings.length === 0){
         return (
             <EmptyState 
-                title="No favorites yet"
+                title="No Favourites Yet"
                 subtitle="You can add your favorite gardens to this page."
             />
         )
