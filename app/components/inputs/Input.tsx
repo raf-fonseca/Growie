@@ -12,6 +12,8 @@ interface InputProps {
     required?: boolean;
     register?: UseFormRegister<FieldValues> ;
     errors?: FieldErrors;
+    value?: string | number; 
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; 
 }
 
 const Input: React.FC<InputProps> = ({
@@ -23,6 +25,8 @@ const Input: React.FC<InputProps> = ({
     required,
     register,
     errors,
+    value,
+    onChange
 }) => {
     return (
         <div className="w-full relative">
@@ -36,6 +40,8 @@ const Input: React.FC<InputProps> = ({
             <input
                 id={id}
                 type={type}
+                value={value}
+                onChange={onChange}  
                 disabled={disabled}
                 {...(register && register(id, { 
                     required,

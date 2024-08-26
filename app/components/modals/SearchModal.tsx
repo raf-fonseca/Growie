@@ -63,7 +63,7 @@ const SearchModal = () => {
             locationValue: location?.value,
             plotSize,
         };
-
+        
         if (dateRange.startDate){
             updatedQuery.startDate = formatISO(dateRange.startDate);
         }
@@ -136,10 +136,11 @@ const SearchModal = () => {
                     title="How Big Do You Need To Growie?"
                     subtitle="Select a size"
                 />
-                
                 <Input 
                     id="plot"
                     label="Plot size (sq ft)"
+                    value={plotSize}
+                    onChange={(e) => setPlotSize(Number(e.target.value))}
                     type="number"
                     disabled={isLoading}
                     required
