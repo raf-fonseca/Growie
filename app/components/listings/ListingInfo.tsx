@@ -13,7 +13,6 @@ interface ListingInfoProps {
     category: { 
         icon: IconType; 
         label: string; 
-        description: string;
     } | undefined;
     description: string;
     plot: number;
