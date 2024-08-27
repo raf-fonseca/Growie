@@ -4,7 +4,7 @@ import getReservations from '../actions/getReservations';
 import ReservationsClient from './ReservationsClient';
 
 
-const ReservationsPage= async () => {
+const ReservationsPage = async () => {
     const currentUser = await getCurrentUser();
 
     if (!currentUser) {
