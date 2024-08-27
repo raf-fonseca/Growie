@@ -13,7 +13,7 @@ export async function POST(
     }
 
     const body = await request.json();
-    console.log("Received data: ", body);
+
     const {
         title,
         description,

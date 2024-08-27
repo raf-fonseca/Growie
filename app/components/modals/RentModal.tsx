@@ -10,7 +10,6 @@ import CategoryInput from '../inputs/CategoryInput';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import CountrySelect from '../inputs/CountrySelect';
 import dynamic from 'next/dynamic';
-import PlotInput from '../inputs/PlotInput';
 import ImageUpload from '../inputs/ImageUpload';
 import Input from '../inputs/Input';
 import axios from 'axios';

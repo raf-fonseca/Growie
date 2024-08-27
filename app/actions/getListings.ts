@@ -1,4 +1,3 @@
-// TODO: add category filter on the front end 
 import prisma from "@/app/libs/prismadb";
 
 export interface IListingsParams {

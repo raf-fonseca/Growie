@@ -1,3 +1,6 @@
+//TODO: make calendar have a default range of 0
+//TODO: fix plot size bug
+
 'use client';
 
 import Modal from './Modal';
@@ -63,7 +66,7 @@ const SearchModal = () => {
             locationValue: location?.value,
             plotSize,
         };
-        
+
         if (dateRange.startDate){
             updatedQuery.startDate = formatISO(dateRange.startDate);
         }
