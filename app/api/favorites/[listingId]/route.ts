@@ -52,7 +52,7 @@ export async function DELETE(
     const { listingId } = params;
 
     if (!listingId || typeof listingId !== "string") {
-        throw new Error("Invalid ID");
+        return NextResponse.json({ error: 'Invalid ID' }, { status: 400 });
     }
 
     let favoriteIds = [...(currentUser.favoriteIds || [])];
