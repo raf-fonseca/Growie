@@ -17,7 +17,7 @@ const nextConfig = {
   experimental: {
     missingSuspenseWithCSRBailout: false,
   },
-
+  output: "export"
 };
 
 
