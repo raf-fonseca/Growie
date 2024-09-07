@@ -27,6 +27,9 @@ export default async function RootLayout({
     const currentUser = await getCurrentUser();
     return (
         <html lang="en">
+            <head>
+                <link rel="icon" href="logoSmall1.png" type="image/x-icon" />
+            </head>
           <body className={inter.className}>
             <ToasterProvider />
             <SearchModal />
