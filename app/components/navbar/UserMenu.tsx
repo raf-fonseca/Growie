@@ -31,8 +31,9 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
             loginModal.onOpen();
         }
 
-        rentModal.onOpen();
-        // TODO: make sure the rent modal closes if user doesnt log in 
+        if (currentUser){
+            rentModal.onOpen();
+        }
     }, [currentUser, loginModal, rentModal]);
     return (
         <div className="relative">

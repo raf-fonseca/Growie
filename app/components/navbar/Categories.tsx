@@ -1,4 +1,3 @@
-// TODO: add more categories
 'use client';
 
 import Container from '../Container'

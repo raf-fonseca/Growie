@@ -1,4 +1,4 @@
-//TODO: minimum resevation of 2 weeks 
+//TODO: minimum reservation of 2 weeks 
 'use client';
 
 import { Range, DateRange, RangeKeyDict } from 'react-date-range';

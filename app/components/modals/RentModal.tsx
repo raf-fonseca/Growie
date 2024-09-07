@@ -1,4 +1,4 @@
-// Todo: Make titles capitalize
+
 'use client';
 
 import useRentModal from '@/app/hooks/useRentModal'
