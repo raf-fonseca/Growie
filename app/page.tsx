@@ -5,7 +5,7 @@ import EmptyState from './components/EmptyState';
 import ListingCard from './components/listings/ListingCard';
 import getCurrentUser from './actions/getCurrentUser';
 
-export const dynamic = 'force-dynamic'; 
+// export const dynamic = 'force-dynamic'; 
 
 interface HomeProps {
 	searchParams: IListingsParams
@@ -17,7 +17,10 @@ const Home = async ({ searchParams }: HomeProps) =>  {
 
 	if (listings.length === 0) {
 		return(
-			<EmptyState showReset/>
+			<EmptyState 
+				title="No Listings Found"
+				subtitle="There are no listings that match your search"
+			/>
 		)
 	}
 	
