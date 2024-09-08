@@ -4,7 +4,6 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
-// TODO: add more fields for listing if neccessary
 // run $ npx prisma db push
 
 generator client {
