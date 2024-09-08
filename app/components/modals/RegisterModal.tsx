@@ -60,7 +60,7 @@ const RegisterModal = () => {
     const bodyContent = (
         <div className="flex flex-col gap-4">
             <Heading 
-                title="Welcome to The Growie"
+                title="Welcome to Growie"
                 subtitle="Create an account!"
                 
             />
