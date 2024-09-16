@@ -1,4 +1,4 @@
-// TODO: fix google and github login
+// TODO: write message if user has already used the email to login 
 'use client';
 
 import axios from "axios";
@@ -73,6 +73,7 @@ const LoginModal = () => {
             />
             <Input 
                 id="email"
+                type="email"
                 label="Email"
                 disabled={isLoading}
                 register={register}
