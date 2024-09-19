@@ -15,7 +15,7 @@ const Search = () => {
     const locationValue = params?.get('locationValue')
     const startDate = params?.get('startDate')
     const endDate = params?.get('endDate')
-    const plotSize = params?.get('plotSize')
+    const plot = params?.get('plot')
 
 
     const locationLabel = useMemo(() => {
@@ -42,12 +42,12 @@ const Search = () => {
     }, [startDate, endDate])
 
     const plotLabel = useMemo(() => {
-        if (plotSize) {
-            return `${plotSize} sq ft`
+        if (plot) {
+            return `${plot} sq ft`
         }
 
         return 'Any Size'
-    }, [plotSize])
+    }, [plot])
 
     
 

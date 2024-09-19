@@ -33,7 +33,7 @@ const SearchModal = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [location, setLocation] = useState<CountrySelectValue>();
     const [step, setStep] = useState(STEPS.LOCATION);
-    const [plotSize, setPlotSize] = useState(1);
+    const [plot, setPlot] = useState(1);
     const [dateRange, setDateRange] = useState<Range>({
         startDate: new Date(),
         endDate: new Date(),
@@ -64,7 +64,7 @@ const SearchModal = () => {
         const updatedQuery: any = {
             ...currentQuery,
             locationValue: location?.value,
-            plotSize,
+            plot,
         };
 
         if (dateRange.startDate){
@@ -84,7 +84,7 @@ const SearchModal = () => {
         searchModal.onClose();
         router.push(url);
 
-    }, [step, location, plotSize, dateRange, params, router, searchModal, onNext]);
+    }, [step, location, plot, dateRange, params, router, searchModal, onNext]);
 
 
     const actionLabel = useMemo(() => {
@@ -142,8 +142,8 @@ const SearchModal = () => {
                 <Input 
                     id="plot"
                     label="Plot size (sq ft)"
-                    value={plotSize}
-                    onChange={(e) => setPlotSize(Number(e.target.value))}
+                    value={plot}
+                    onChange={(e) => setPlot(Number(e.target.value))}
                     type="number"
                     disabled={isLoading}
                     required
