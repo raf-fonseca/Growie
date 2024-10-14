@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar";
@@ -12,13 +12,13 @@ import useRentModal from "@/app/hooks/useRentModal";
 import { useRouter } from "next/navigation";
 
 interface UserMenuProps {
-    currentUser?: SafeUser | null;  
+    currentUser?: SafeUser | null;
 }
 
-const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
+const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     const router = useRouter();
     const registerModal = useRegisterModal();
-    const loginModal = useLoginModal(); 
+    const loginModal = useLoginModal();
     const rentModal = useRentModal();
     const [isOpen, setIsOpen] = useState(false);
 
@@ -31,26 +31,28 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
             loginModal.onOpen();
         }
 
-        if (currentUser){
+        if (currentUser) {
             rentModal.onOpen();
         }
     }, [currentUser, loginModal, rentModal]);
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
-                <div 
+                <div
                     onClick={onRent}
-                    className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer">
-                        Host your garden 
+                    className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
+                >
+                    Host your garden
                 </div>
-                <div 
+                <div
                     onClick={toggleOpen}
-                    className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition">
-                        <AiOutlineMenu size={20} />
-                        <div className="hidden md:block ">
-                            <Avatar src={currentUser?.image}/>
-                        </div>
+                    className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition"
+                >
+                    <AiOutlineMenu size={20} />
+                    <div className="hidden md:block ">
+                        <Avatar src={currentUser?.image} />
                     </div>
+                </div>
             </div>
 
             {isOpen && ( // If isOpen is true, then render the following div
@@ -58,52 +60,50 @@ const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
                     <div className="flex flex-col cursor-pointer">
                         {currentUser ? (
                             <>
-                            {/* TODO: fix the names of the router.push() accordingly */}
-                                <MenuItem 
-                                    onClick={() => router.push('/favorites')}
+                                {/* TODO: fix the names of the router.push() accordingly */}
+                                <MenuItem
+                                    onClick={() => router.push("/favorites")}
                                     label="Favourites"
                                 />
-                                <MenuItem 
-                                    onClick={() => router.push('/trips')}
+                                <MenuItem
+                                    onClick={() => router.push("/my-bookings")}
                                     label="My Bookings"
                                 />
-                                <MenuItem 
-                                    onClick={() => router.push('/reservations')}
+                                <MenuItem
+                                    onClick={() => router.push("/reservations")}
                                     label="Guest Bookings"
                                 />
-                                <MenuItem 
-                                    onClick={() => router.push('/my-plots')}
+                                <MenuItem
+                                    onClick={() => router.push("/my-plots")}
                                     label="My Plots"
                                 />
-                                <MenuItem 
+                                <MenuItem
                                     onClick={rentModal.onOpen}
                                     label="Host my garden"
                                 />
                                 <hr />
-                                <MenuItem 
+                                <MenuItem
                                     onClick={() => signOut()}
                                     label="Log out"
                                 />
-                    
                             </>
-                        ): (
+                        ) : (
                             <>
-                                <MenuItem 
+                                <MenuItem
                                     onClick={loginModal.onOpen}
                                     label="Log in"
                                 />
-                                <MenuItem 
-                                    onClick={registerModal.onOpen} // TODO: Login after signing up 
+                                <MenuItem
+                                    onClick={registerModal.onOpen} // TODO: Login after signing up
                                     label="Sign Up"
                                 />
-                        
                             </>
                         )}
                     </div>
                 </div>
             )}
         </div>
-    )
-}
+    );
+};
 
-export default UserMenu
+export default UserMenu;
