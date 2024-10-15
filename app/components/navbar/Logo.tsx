@@ -13,6 +13,7 @@ const Logo = () => {
             height="175"
             width="175"
             src="/logoMedium.jpeg"
+            priority
         />
     );
 };
