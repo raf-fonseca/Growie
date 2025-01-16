@@ -1,5 +1,5 @@
 # Growie 🪴🪴
-Introducing Growie: a platform where farmers and gardeners rent out land to nature lovers, letting them create and enjoy their own personalized gardens! 🌱🌿
+A platform where farmers and gardeners rent out land to nature lovers, letting them create and enjoy their own personalized gardens! 🌱🌿
 
 # Technologies Used 
 MongoDB, Next.js, Prisma, Next Auth, Typescript, React, Tailwind CSS
